@@ -1,0 +1,51 @@
+
+/* A binary tree node has data, pointer to left child
+   and a pointer to right child /
+struct Node
+{
+    int data;
+    Node* left;
+    Node* right;
+}; */
+
+// function should print the nodes at k distance from root
+vector<int> Kdistance(struct Node *root, int k)
+{
+  // Your code here
+ vector<int>ans;
+    int level=0;
+    queue<Node*>harsh;
+    
+    harsh.push(root);
+    
+    while(!harsh.empty())
+    {
+        
+        // you need to write simle level order traversal
+        int sz=harsh.size();
+        for(int i=0;i<sz;i++)
+        {
+            Node *newdata=harsh.front();
+            harsh.pop();
+            int val=newdata->data;
+            // lets go with the base case
+            if(level==k)
+            {
+                ans.push_back(val);
+            }
+            if(newdata->left)
+            {
+                harsh.push(newdata->left);
+            }
+            if(newdata->right)
+            {
+                harsh.push(newdata->right);
+            }
+        }
+      
+        
+        
+        level++;
+    }
+    return ans;
+}
