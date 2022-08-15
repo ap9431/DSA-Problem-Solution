@@ -1,1 +1,57 @@
 
+/* 
+         
+struct Node
+{
+    int data;
+    struct Node* next;
+    
+    Node(int x){
+        data = x;
+        next = NULL;
+    }
+};
+
+*/
+
+class Solution
+{
+    public:
+    Node* reverse(Node *head){
+        Node* prev=NULL,*next=NULL;
+        Node* curr=head;
+        
+        while(curr){
+            next=curr->next;
+            curr->next=prev;
+            prev=curr;
+            curr=next;
+        }
+        return prev;
+    }
+    
+    Node* addOne(Node *head) 
+    {
+        // Your Code here
+        // return head of list after adding one
+        head=reverse(head);
+        Node *temp=head;
+        Node *ptr=head;
+        int carr=1,sum=0,q=0;
+        
+        while(temp!=NULL) {
+           sum=carr+temp->data;
+           carr=sum/10;
+           temp->data=sum%10;
+          // cout<<temp->data<<"  ";
+           ptr=temp;
+           temp=temp->next;
+        }
+       // cout<<endl;
+        if(carr>0){
+            ptr->next=new Node(carr);
+        }
+        head=reverse(head);
+        return head;
+    }
+};
