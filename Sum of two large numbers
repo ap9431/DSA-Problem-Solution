@@ -1,0 +1,52 @@
+class Solution {
+  public:
+    string findSum(string x, string y) {
+        // Your code goes here
+        string s="";
+        int m=max(x.size(),y.size());
+        int p=x.size()-1;
+        int q=y.size()-1,c=0,sum=0,temp;
+        
+        for(int i=m-1;i>=0;i--){
+            if(p>=0 && q>=0){
+             temp=(x[p]-'0')+(y[q]-'0')+c;
+            c=(temp)/10;
+            s=to_string(temp%10)+s;
+          //  cout<<temp<<endl;
+            p--;q--;
+            }
+            else{
+                if(q<0 ){
+                    temp=(x[p]-'0')+c;
+                    c=(temp)/10;
+                    s=to_string(temp%10)+s;
+                    p--;
+                }
+                else{
+                  temp=(y[q]-'0')+c;
+                    c=(temp)/10;
+                    s=to_string(temp%10)+s;
+                    //cout<<y[q]-'0'<<endl;
+                    q--;
+                }
+            }
+            
+            sum+=temp;
+        }
+        //cout<<temp<<endl;
+        if(c!=0){
+            s=to_string(c)+s;
+        }
+        int i=0;
+        while(s.size()>1){
+            if(*s.begin()=='0')
+            s.erase(s.begin());
+            else break;
+           // cout<<i<<endl;
+            i++;
+            
+        }
+        
+        return s;
+    }
+};
