@@ -1,0 +1,35 @@
+//User function template for JAVA
+
+/* Node is defined as
+
+class Node
+{
+    int data;
+    Node next;
+    Node(int d) {data = d; next = null; }
+}
+
+*/
+
+
+class Solution {
+    //Function to check if the linked list has a loop.
+    public static boolean detectLoop(Node head){
+        // Add code here
+         Node fastPtr = head;
+       Node slowPtr= head;
+       
+       while(fastPtr!= null && fastPtr.next!=null){
+           fastPtr = fastPtr.next.next;
+           slowPtr= slowPtr.next;
+           
+           if(slowPtr==fastPtr){
+               return true;
+           }
+
+
+        
+       }
+       return false;
+    }
+}
