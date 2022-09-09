@@ -1,2 +1,2 @@
 # DSA-Problem-Solution
-DSA Problems
+DSA Problem
